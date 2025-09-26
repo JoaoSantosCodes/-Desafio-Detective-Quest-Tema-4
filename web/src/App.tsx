@@ -7,6 +7,17 @@ function App() {
   const [showModal, setShowModal] = useState(false)
   const [toast, setToast] = useState<{ kind: 'success' | 'warning' | 'danger' | 'info'; text: string } | null>(null)
 
+  const iconFor = (t: typeof tabs[number]) => {
+    const name = t.toLowerCase()
+    switch (name) {
+      case 'salas': return '/icons/icon-salas.svg'
+      case 'pistas': return '/icons/icon-pistas.svg'
+      case 'suspeitos': return '/icons/icon-suspeitos.svg'
+      case 'ajuda': return '/icons/icon-ajuda.svg'
+      default: return undefined
+    }
+  }
+
   return (
     <div className="app">
       <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
@@ -26,6 +37,8 @@ function App() {
             className={`tab ${activeTab === t ? 'tab--active' : ''}`}
             onClick={() => setActiveTab(t)}
           >
+            {/* Inline <img> for simplicity; could be optimized with SVG symbols later */}
+            {iconFor(t) && <img src={iconFor(t)} alt="" aria-hidden="true" style={{ width: 20, height: 20 }} />}
             {t}
           </button>
         ))}

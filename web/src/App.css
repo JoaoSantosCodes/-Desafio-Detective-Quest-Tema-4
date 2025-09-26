@@ -92,6 +92,9 @@
 /* Tabs */
 .tabs { display: flex; gap: var(--ds-space-16); border-bottom: var(--ds-border-01) solid var(--ds-color-border); margin-bottom: var(--ds-space-16); }
 .tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-08);
   padding: var(--ds-space-12) var(--ds-space-16);
   cursor: pointer;
   font: 600 16px/24px Inter;
@@ -99,6 +102,7 @@
 }
 .tab--active { color: var(--ds-color-text-primary); border-bottom: var(--ds-border-02) solid var(--ds-color-primary); }
 .tab:hover { color: var(--ds-color-text-primary); }
+.tab svg { width: 20px; height: 20px; stroke: currentColor; fill: none; }
 
 /* List */
 .list { display: grid; gap: var(--ds-space-08); }
