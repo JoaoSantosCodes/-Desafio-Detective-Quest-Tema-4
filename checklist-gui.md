@@ -20,7 +20,7 @@ Este checklist orienta a criação da interface gráfica do Detective Quest, des
 - [ ] Exportação de assets: ícones e ilustrações em SVG (nomenclatura semanticamente clara; pasta `assets/svg/`)
 
 ## 3) Tecnologia e Arquitetura
-- [ ] Escolher biblioteca gráfica (C): SDL2 ou Raylib (decisão registrada)
+- [x] Escolher biblioteca gráfica (C): Raylib (decisão registrada)
 - [ ] Estrutura de projeto: `src/ui/` separado dos módulos atuais; roteador de telas; loop de eventos exclusivo
 - [ ] Integração com lógica existente: adaptadores para `salas`, `pistas`, `suspeitos` (funções de render e handlers de evento)
 - [ ] Gerenciamento de estado da UI: tela atual, estado de seleção, formulários, mensagens de feedback
@@ -47,23 +47,6 @@ Este checklist orienta a criação da interface gráfica do Detective Quest, des
 - [ ] DPI e resoluções: validar em 100%, 125%, 150%; janelas redimensionáveis (se aplicável)
 
 ## 7) Documentação
-- [ ] README: seção “Interface Gráfica (GUI)” com dependências, como executar e atalhos
-- [ ] Docs: `docs/06-ui-ux.md` (guidelines e componentes), `docs/07-arquitetura-ui.md` (estrutura e roteamento)
+- [x] README: seção “Interface Gráfica (GUI)” com planejamento e referências
+- [x] Docs: `docs/06-ui-ux.md` (guidelines e componentes), `docs/07-arquitetura-ui.md` (Raylib e build)
 - [ ] Changelog e Decision Log: registrar escolhas (biblioteca, padrões de navegação)
-
-## 8) Governança e Release
-- [ ] Versionamento: primeira release GUI `v1.1.0`
-- [ ] Notas de Release: telas implementadas, limitações, próximos passos
-- [ ] Tag e pacote de entrega anexado no GitHub (assets + binário GUI)
-
-## 9) Riscos e Dependências
-- [ ] Instalação da biblioteca (Windows): instruções claras e reprodutíveis
-- [ ] Dependências de fonte/ícones: licenças e tamanhos
-- [ ] Performance: evitar sobrecarga no render e alocações excessivas
-
-## Critérios de Aceite (Definition of Done)
-- [ ] Protótipos em Figma aprovados (flows principais e componentes)
-- [ ] Binário GUI funcional com Menu, Salas, Pistas e Suspeitos
-- [ ] Testes de smoke e validações de entrada passando
-- [ ] Documentação atualizada (README + docs/06-07)
-- [ ] Pacote de release gerado e publicado (GitHub)
