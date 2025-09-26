@@ -23,18 +23,27 @@ Este documento apresenta a organização técnica da UI e sua integração com o
 - Processamento de teclado/mouse; timers para animações leves
 
 ## Decisão de Biblioteca
-- SDL2 ou Raylib (a confirmar)
-- Critérios: facilidade de instalação no Windows, suporte a fontes, eventos, performance
+- Biblioteca escolhida: Raylib
+- Motivos: onboarding simples no Windows, API direta para desenho e eventos, fácil empacotamento
 
 ## Makefile
 - Alvos: `gui`, `run-gui`
-- Flags: `-Wall -Wextra -Wpedantic -std=c11` + libs da GUI
+- Flags: `-Wall -Wextra -Wpedantic -std=c11`
+- Linkagem Raylib (Windows, exemplo MinGW): `-lraylib -lopengl32 -lgdi32 -lwinmm`
+- Binário esperado: `build/detective-quest-gui.exe`
 
 ## Testes e Qualidade
 - Smoke tests por tela
 - Validação de entradas; mensagens de erro claras
 - Perf: FPS, uso de memória, tempo de resposta
 
+## Estrutura de Componentes (mínima)
+- Button: estados hover/press/disabled
+- Input: foco, cursor, validação
+- List: itens com seleção
+- Tab: navegação entre telas
+- Modal/Toast/Tooltip: padrões de feedback
+
 ## Roadmap Técnico
-- v1.1.0: Menu + Salas + Pistas + Suspeitos (GUI)
+- v1.1.0: Menu + Salas + Pistas + Suspeitos (GUI) em Raylib
 - v1.2.0: Tema claro/escuro, configurações, polimento

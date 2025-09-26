@@ -134,3 +134,13 @@ Dica: se estiver com pressa, comece por "Build e Execução".
   4) Descrição: build limpo (C11 + flags estritas), modos demo/integração validados, testes OK, documentação atualizada
   5) Anexe o arquivo `dist/detective-quest-v1.0.0.zip`
   6) Clique em "Publish release"
+
+## Interface Gráfica (GUI) — Planejamento
+- Biblioteca escolhida: Raylib (Windows-friendly, API simples)
+- Tema inicial: Escuro (tokens definidos em docs/06-ui-ux.md)
+- Tipografia: Inter (fallback Segoe UI)
+- Ícones: Feather (SVG, stroke 2px, grid 24px)
+- Documentos de referência:
+  - UI/UX: [docs/06-ui-ux.md](docs/06-ui-ux.md)
+  - Arquitetura da UI: [docs/07-arquitetura-ui.md](docs/07-arquitetura-ui.md)
+- Próximos passos: preparar Makefile (`gui`/`run-gui`), criar componentes básicos, iniciar protótipo no Figma.

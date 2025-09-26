@@ -3,17 +3,19 @@
 Este documento define padrões de design e UX para a interface gráfica do Detective Quest.
 
 ## Foundations (Design Tokens)
-- Tipografia: Inter/Noto Sans (fallback system), tamanhos 12/14/16/20/24 px
+- Tipografia: Inter (fallback Segoe UI), tamanhos 14/16/20/24 px
 - Espaçamento: escala 4/8/12/16/24 px
-- Cores (tema claro inicial):
-  - Primária: #2D6CDF
-  - Texto: #1A1A1A
-  - Plano de fundo: #FFFFFF
-  - Superfícies: #F5F7FA
-  - Borda/Divisor: #E3E7ED
-  - Danger: #D92D20
-  - Sucesso: #12B76A
-- Raios de canto: 4/8 px
+- Cores (tema escuro inicial):
+  - Background: #0F1115
+  - Surface: #151922
+  - Text-Primary: #E6E8EE
+  - Text-Secondary: #A6ADBB
+  - Accent (primary): #3B82F6
+  - Border/Divider: #262C36
+  - Success: #22C55E
+  - Danger: #EF4444
+  - Focus/Outline: #93C5FD
+- Raios de canto: 6/8 px
 - Estados: hover, active, disabled, focus (outline visível)
 
 ## Componentes
@@ -44,6 +46,7 @@ Este documento define padrões de design e UX para a interface gráfica do Detec
 
 ## Exportação de Assets
 - Ícones/ilustrações em SVG
+- Pacote de ícones: Feather (stroke 2 px, grid 24 px, stroke="currentColor")
 - Nomeação semântica: `icon-salas.svg`, `icon-pistas.svg`, `icon-suspeitos.svg`
 - Pasta: `assets/svg/`
 
