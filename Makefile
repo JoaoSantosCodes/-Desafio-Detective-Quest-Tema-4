@@ -42,6 +42,9 @@ GUI_DIR=src/ui
 GUI_SRC=$(GUI_DIR)/main_gui.c
 GUI_BIN=build/detective-quest-gui.exe
 RAYLIB_LIBS=-lraylib -lopengl32 -lgdi32 -lwinmm
+# Versão e pasta de distribuição da GUI
+GUI_VERSION=1.1.0
+DIST_DIR=dist/detective-quest-gui-v$(GUI_VERSION)
 
 # Compila o binário GUI (requer Raylib instalado)
  gui: $(GUI_BIN)
@@ -54,10 +57,23 @@ $(GUI_BIN): $(GUI_SRC)
  run-gui: $(GUI_BIN)
 	./$(GUI_BIN)
 
+# Empacota binário + assets em um .zip versionado em dist/
+ package-gui: $(GUI_BIN)
+	@if not exist dist mkdir dist
+	@if exist $(DIST_DIR) rmdir /S /Q $(DIST_DIR)
+	@mkdir $(DIST_DIR)
+	@mkdir $(DIST_DIR)\assets
+	@if exist assets\fonts mkdir $(DIST_DIR)\assets\fonts
+	@if exist assets\fonts copy assets\fonts\* $(DIST_DIR)\assets\fonts\ > NUL
+	@if exist assets\svg mkdir $(DIST_DIR)\assets\svg
+	@if exist assets\svg copy assets\svg\*.svg $(DIST_DIR)\assets\svg\ > NUL
+	@copy $(GUI_BIN) $(DIST_DIR)\ > NUL
+	@powershell -NoProfile -Command "Compress-Archive -Path '$(DIST_DIR)\*' -DestinationPath 'dist\detective-quest-gui-v$(GUI_VERSION).zip' -Force"
+
 clean:
 	del /Q src\*.o 2> NUL || true
 	del /Q $(TARGET).exe 2> NUL || true
 	del /Q $(TEST_DIR)\*.exe 2> NUL || true
 	del /Q build\*.exe 2> NUL || true
 
-.PHONY: all clean run tests test gui run-gui
+.PHONY: all clean run tests test gui run-gui package-gui

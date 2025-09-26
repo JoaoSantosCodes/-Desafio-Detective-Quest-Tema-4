@@ -59,5 +59,5 @@ Este documento define padrões de design e UX para a interface gráfica do Detec
 ## Instalação da Fonte Inter (Desktop GUI)
 - Local do arquivo: coloque `assets/fonts/Inter-Regular.ttf` no repositório (não versionado opcionalmente) ou no sistema.
 - Comportamento: a GUI carrega automaticamente `assets/fonts/Inter-Regular.ttf` se existir; caso contrário usa a fonte padrão do sistema (fallback).
-- Licença: Inter é licenciada sob SIL Open Font License 1.1; mantenha referência ao autor e à licença ao distribuir.
-- Alternativas: é possível usar a distribuição oficial (CDN) para web, mas para a GUI desktop use o arquivo TTF local.
+- Licença: Inter é licenciada sob SIL Open Font License 1.1; mantenha referência ao autor e à licença ao distribuir. <mcreference link="https://github.com/rsms/inter/blob/master/LICENSE.txt" index="1">1</mcreference> <mcreference link="https://openfontlicense.org/" index="2">2</mcreference>
+- Alternativas: é possível usar a distribuição oficial (CDN) para web, mas para a GUI desktop use o arquivo TTF local. <mcreference link="https://github.com/rsms/inter" index="3">3</mcreference> <mcreference link="https://rsms.me/inter/" index="5">5</mcreference>
