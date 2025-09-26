@@ -115,3 +115,22 @@ Equipe de Ensino – Enigma Studios
 - Guia de Contribuição: [docs/05-guia-de-contribuicao.md](docs/05-guia-de-contribuicao.md)
 
 Dica: se estiver com pressa, comece por "Build e Execução".
+
+## Exemplos
+- Pasta: `examples/`
+- Conteúdo: `algoritmos_avancados.c` (material didático; não faz parte do build principal)
+- Como compilar rapidamente:
+  - `gcc -Wall -Wextra -Wpedantic -std=c11 examples/algoritmos_avancados.c -o examples/algoritmos_avancados.exe`
+- Observação: mantenha o projeto modular; use este exemplo para estudos e experimentos.
+
+## Release v1.0.0
+- Tag criada: `v1.0.0` (Git)
+- Pacote de entrega: `dist/detective-quest-v1.0.0.zip`
+- Conteúdo do pacote: `src/`, `include/`, `tests/`, `docs/`, `examples/`, `README.md`, `checklist.md`, `Makefile`, `.gitignore`
+- Publicar no GitHub (via web):
+  1) Acesse "Releases" > "Draft a new release"
+  2) Escolha a tag `v1.0.0`
+  3) Título: "Release v1.0.0"
+  4) Descrição: build limpo (C11 + flags estritas), modos demo/integração validados, testes OK, documentação atualizada
+  5) Anexe o arquivo `dist/detective-quest-v1.0.0.zip`
+  6) Clique em "Publish release"

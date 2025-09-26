@@ -16,6 +16,8 @@ Este checklist acompanha o progresso, qualidade de código e próximos passos do
 - [x] Testes automatizados (Pistas e Suspeitos) — compilados e executados com sucesso
 - [x] Documentação técnica inicial em `docs/` (visão geral, estruturas, complexidade, build/execução, guia)
 - [x] Verificações finais de release executadas (ajuda `-h`, smoke tests Salas/Pistas/Suspeitos em modo demo, testes automatizados OK)
+- [x] Tag de versão criada: `v1.0.0` (Git)
+- [x] Pacote final `.zip` gerado: `dist/detective-quest-v1.0.0.zip`
 
 ## 2) Estrutura atual de pastas
 - `src/` — `main.c`, `salas.c`, `pistas.c`, `suspeitos.c`
@@ -23,6 +25,8 @@ Este checklist acompanha o progresso, qualidade de código e próximos passos do
 - `Makefile` — alvo principal para build com GCC/MinGW
 - `.gitignore` — criado
 - `docs/` — esqueleto criado (visao geral, estruturas de dados, complexidade, build/execucao, guia de contribuicao) e conteúdos iniciais concluídos
+- `examples/` — arquivo `algoritmos_avancados.c` movido para exemplos (não faz parte do build principal)
+- `dist/` — pacote `detective-quest-v1.0.0.zip`
 
 ## 3) Ações concluídas
 - [x] Implementação do módulo `salas` (Nível Novato):
@@ -53,11 +57,15 @@ Este checklist acompanha o progresso, qualidade de código e próximos passos do
 - [x] Comentários explicativos adicionados nas funções auxiliares do `main.c`
 - [x] Documentos `docs/01-05` atualizados com índice/diagrama e APIs públicas
 - [x] Verificação final: build com flags validado, ajuda `-h` verificada, smoke tests dos modos demo (Salas/Pistas/Suspeitos) e testes automatizados executados com sucesso
+- [x] Publicação no GitHub: branch `main` com origem `origin/main` e push concluído
+- [x] Tag `v1.0.0` enviada para o GitHub
 
 ## 4) Pendências e próximos passos
+- [ ] (Opcional) Publicar a Release v1.0.0 no GitHub (anexar `dist/detective-quest-v1.0.0.zip`)
 - [ ] (Opcional) Adicionar diagrama(s) complementares e exemplos detalhados por módulo nos docs
 - [ ] (Opcional) Refatorar `main.c` em submódulos se o arquivo crescer muito
 - [ ] (Opcional) Integrar `explorarSalasComExtras` ao fluxo das salas quando houver comandos adicionais globais
+- [ ] (Opcional) Adicionar licença (MIT) ao repositório
 
 ## 5) Como compilar e executar (rápido)
 - Compilar com GCC (direto):
@@ -86,5 +94,6 @@ Este checklist acompanha o progresso, qualidade de código e próximos passos do
 - Comentários explicativos adicionados no `main.c`
 - Criação e preenchimento inicial da documentação técnica em `docs/`
 - Execução das verificações finais de release (ajuda `-h`, smoke tests de modos demo, testes automatizados)
+- Criação e push da tag `v1.0.0`; geração do pacote `.zip` em `dist/`
 
 Mantenha este checklist atualizado conforme concluímos cada etapa.
