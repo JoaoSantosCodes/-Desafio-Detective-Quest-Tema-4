@@ -48,3 +48,15 @@ gcc -Wall -Wextra -Wpedantic -std=c11 -Iinclude tests/test_pistas.c src/pistas.c
 gcc -Wall -Wextra -Wpedantic -std=c11 -Iinclude tests/test_suspeitos.c src/suspeitos.c -o tests/test_suspeitos.exe
 ./tests/test_suspeitos.exe
 ```
+
+## Interface Gráfica (GUI)
+- Dependência: Raylib instalada e acessível ao GCC.
+- Compilar (Makefile):
+```
+make gui
+```
+- Executar GUI:
+```
+make run-gui
+```
+- Linkagem prevista (Windows/MinGW): `-lraylib -lopengl32 -lgdi32 -lwinmm`. Se não tiver Raylib instalada, posso te ajudar a configurar (MSYS2 ou vcpkg).
