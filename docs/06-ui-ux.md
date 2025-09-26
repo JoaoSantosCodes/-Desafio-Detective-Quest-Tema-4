@@ -54,3 +54,10 @@ Este documento define padrões de design e UX para a interface gráfica do Detec
 - FPS estável (meta 60)
 - Sem vazamentos de memória
 - Respostas de eventos < 16ms em ações comuns
+
+
+## Instalação da Fonte Inter (Desktop GUI)
+- Local do arquivo: coloque `assets/fonts/Inter-Regular.ttf` no repositório (não versionado opcionalmente) ou no sistema.
+- Comportamento: a GUI carrega automaticamente `assets/fonts/Inter-Regular.ttf` se existir; caso contrário usa a fonte padrão do sistema (fallback).
+- Licença: Inter é licenciada sob SIL Open Font License 1.1; mantenha referência ao autor e à licença ao distribuir.
+- Alternativas: é possível usar a distribuição oficial (CDN) para web, mas para a GUI desktop use o arquivo TTF local.
