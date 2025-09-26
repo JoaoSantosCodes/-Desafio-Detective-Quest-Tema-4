@@ -38,7 +38,7 @@ Este checklist orienta a criação da interface gráfica do Detective Quest, des
 - [x] Atualizar Makefile: alvos `gui` e `run-gui` com links para a biblioteca escolhida
 - [x] Pasta de assets: `assets/svg/` (somente SVG), `assets/fonts/` (se necessário)
 - [x] Binário: `detective-quest-gui.exe` (modo GUI) e manter `detective-quest.exe` (modo terminal)
-- [ ] Pacote de release: incluir binário GUI e assets (zip separado `dist/detective-quest-gui-vX.Y.Z.zip`) — usar `make package-gui` para gerar o arquivo
+- [x] Pacote de release: incluir binário GUI e assets (zip separado `dist/detective-quest-gui-vX.Y.Z.zip`) — usar `make package-gui` para gerar o arquivo
 
 ## 6) Testes e QA
 - [ ] Smoke tests por tela: abrir/fechar, navegação, atalhos, feedback

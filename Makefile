@@ -44,14 +44,17 @@ GUI_BIN=build/detective-quest-gui.exe
 RAYLIB_LIBS=-lraylib -lopengl32 -lgdi32 -lwinmm
 # Versão e pasta de distribuição da GUI
 GUI_VERSION=1.1.0
-DIST_DIR=dist/detective-quest-gui-v$(GUI_VERSION)
+DIST_DIR=dist\detective-quest-gui-v$(GUI_VERSION)
+# Paths padrão da instalação da Raylib no MSYS2 (podem ser sobrescritos via make RAYLIB_INCLUDE=... RAYLIB_LIBDIR=...)
+RAYLIB_INCLUDE?=C:\msys64\mingw64\include
+RAYLIB_LIBDIR?=C:\msys64\mingw64\lib
 
 # Compila o binário GUI (requer Raylib instalado)
  gui: $(GUI_BIN)
 
 $(GUI_BIN): $(GUI_SRC)
 	@if not exist build mkdir build
-	$(CC) $(CFLAGS) $(INCLUDES) $< -o $@ $(RAYLIB_LIBS)
+	$(CC) $(CFLAGS) $(INCLUDES) -I"$(RAYLIB_INCLUDE)" $< -o $@ -L"$(RAYLIB_LIBDIR)" $(RAYLIB_LIBS)
 
 # Executa o binário GUI
  run-gui: $(GUI_BIN)
@@ -60,15 +63,15 @@ $(GUI_BIN): $(GUI_SRC)
 # Empacota binário + assets em um .zip versionado em dist/
  package-gui: $(GUI_BIN)
 	@if not exist dist mkdir dist
-	@if exist $(DIST_DIR) rmdir /S /Q $(DIST_DIR)
-	@mkdir $(DIST_DIR)
-	@mkdir $(DIST_DIR)\assets
-	@if exist assets\fonts mkdir $(DIST_DIR)\assets\fonts
-	@if exist assets\fonts copy assets\fonts\* $(DIST_DIR)\assets\fonts\ > NUL
-	@if exist assets\svg mkdir $(DIST_DIR)\assets\svg
-	@if exist assets\svg copy assets\svg\*.svg $(DIST_DIR)\assets\svg\ > NUL
-	@copy $(GUI_BIN) $(DIST_DIR)\ > NUL
-	@powershell -NoProfile -Command "Compress-Archive -Path '$(DIST_DIR)\*' -DestinationPath 'dist\detective-quest-gui-v$(GUI_VERSION).zip' -Force"
+	@cmd /C if exist $(DIST_DIR) rmdir /S /Q $(DIST_DIR)
+	@cmd /C mkdir $(DIST_DIR)
+	@cmd /C mkdir $(DIST_DIR)\assets
+	@cmd /C if exist assets\fonts mkdir $(DIST_DIR)\assets\fonts
+	@cmd /C if exist assets\svg mkdir $(DIST_DIR)\assets\svg
+	@powershell -NoProfile -Command "if (Test-Path 'assets\fonts') { Copy-Item 'assets\fonts\*' '$(DIST_DIR)\assets\fonts' -Force }"
+	@powershell -NoProfile -Command "if (Test-Path 'assets\svg') { Copy-Item 'assets\svg\*.svg' '$(DIST_DIR)\assets\svg' -Force }"
+	@powershell -NoProfile -Command Copy-Item "$(GUI_BIN)" "$(DIST_DIR)" -Force
+	@powershell -NoProfile -Command Compress-Archive -Path $(DIST_DIR)\* -DestinationPath dist\detective-quest-gui-v$(GUI_VERSION).zip -Force
 
 clean:
 	del /Q src\*.o 2> NUL || true
