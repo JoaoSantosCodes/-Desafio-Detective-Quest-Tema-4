@@ -1,4 +1,10 @@
 #include <raylib.h>
+#include <stdbool.h>
+
+// Helper para desenhar texto com Font customizado
+static inline void DrawTextUI(Font font, const char *text, int x, int y, int size, Color color) {
+    DrawTextEx(font, (Vector2){(float)x, (float)y}, (float)size, 1.0f, color);
+}
 
 int main(void) {
     const int screenWidth = 960;
@@ -7,6 +13,14 @@ int main(void) {
     InitWindow(screenWidth, screenHeight, "Detective Quest — GUI");
 
     SetTargetFPS(60);
+
+    // Carregar fonte Inter se disponível, senão usar default
+    bool interLoaded = false;
+    Font uiFont = GetFontDefault();
+    if (FileExists("assets/fonts/Inter-Regular.ttf")) {
+        uiFont = LoadFontEx("assets/fonts/Inter-Regular.ttf", 20, NULL, 0);
+        interLoaded = true;
+    }
 
     // Tema escuro básico
     Color bg = (Color){15, 17, 21, 255};      // #0F1115
@@ -29,31 +43,32 @@ int main(void) {
 
             // Header
             DrawRectangle(0, 0, screenWidth, 56, surface);
-            DrawText("Detective Quest", 16, 16, 24, text);
+            DrawTextUI(uiFont, "Detective Quest", 16, 16, 24, text);
 
             // Navegação atual
             const char* tabs[5] = {"Menu", "Salas", "Pistas", "Suspeitos", "Ajuda"};
             for (int i = 0; i < 5; i++) {
                 int x = 160 + i * 100;
                 Color c = (i == currentScreen) ? accent : text;
-                DrawText(tabs[i], x, 20, 20, c);
+                DrawTextUI(uiFont, tabs[i], x, 20, 20, c);
             }
 
             // Conteúdo por tela (placeholder)
             if (currentScreen == 0) {
-                DrawText("Pressione S: Salas | P: Pistas | U: Suspeitos | H/F1: Ajuda", 16, 100, 20, text);
+                DrawTextUI(uiFont, "Pressione S: Salas | P: Pistas | U: Suspeitos | H/F1: Ajuda", 16, 100, 20, text);
             } else if (currentScreen == 1) {
-                DrawText("Tela de Salas — árvore e navegação (e/d/s/r)", 16, 100, 20, text);
+                DrawTextUI(uiFont, "Tela de Salas — árvore e navegação (e/d/s/r)", 16, 100, 20, text);
             } else if (currentScreen == 2) {
-                DrawText("Tela de Pistas — lista, busca, adicionar/atualizar", 16, 100, 20, text);
+                DrawTextUI(uiFont, "Tela de Pistas — lista, busca, adicionar/atualizar", 16, 100, 20, text);
             } else if (currentScreen == 3) {
-                DrawText("Tela de Suspeitos — listagem, buscar, adicionar/atualizar, remover", 16, 100, 20, text);
+                DrawTextUI(uiFont, "Tela de Suspeitos — listagem, buscar, adicionar/atualizar, remover", 16, 100, 20, text);
             } else if (currentScreen == 4) {
-                DrawText("Ajuda — atalhos e instruções", 16, 100, 20, text);
+                DrawTextUI(uiFont, "Ajuda — atalhos e instruções", 16, 100, 20, text);
             }
         EndDrawing();
     }
 
+    if (interLoaded) UnloadFont(uiFont);
     CloseWindow();
     return 0;
 }
