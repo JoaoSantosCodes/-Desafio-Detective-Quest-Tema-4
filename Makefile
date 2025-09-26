@@ -37,9 +37,27 @@ $(TEST_DIR)/test_suspeitos.exe: $(TEST_DIR)/test_suspeitos.c include/suspeitos.h
 	@$(TEST_DIR)/test_pistas.exe
 	@$(TEST_DIR)/test_suspeitos.exe
 
+# ---------------- GUI (Raylib) ----------------
+GUI_DIR=src/ui
+GUI_SRC=$(GUI_DIR)/main_gui.c
+GUI_BIN=build/detective-quest-gui.exe
+RAYLIB_LIBS=-lraylib -lopengl32 -lgdi32 -lwinmm
+
+# Compila o binário GUI (requer Raylib instalado)
+ gui: $(GUI_BIN)
+
+$(GUI_BIN): $(GUI_SRC)
+	@if not exist build mkdir build
+	$(CC) $(CFLAGS) $(INCLUDES) $< -o $@ $(RAYLIB_LIBS)
+
+# Executa o binário GUI
+ run-gui: $(GUI_BIN)
+	./$(GUI_BIN)
+
 clean:
 	del /Q src\*.o 2> NUL || true
 	del /Q $(TARGET).exe 2> NUL || true
 	del /Q $(TEST_DIR)\*.exe 2> NUL || true
+	del /Q build\*.exe 2> NUL || true
 
-.PHONY: all clean run tests test
+.PHONY: all clean run tests test gui run-gui
