@@ -21,13 +21,13 @@ Este checklist orienta a criação da interface gráfica do Detective Quest, des
 
 ## 3) Tecnologia e Arquitetura
 - [x] Escolher biblioteca gráfica (C): Raylib (decisão registrada)
-- [ ] Estrutura de projeto: `src/ui/` separado dos módulos atuais; roteador de telas; loop de eventos exclusivo
+- [x] Estrutura de projeto: `src/ui/` separado dos módulos atuais; roteador de telas; loop de eventos exclusivo
 - [ ] Integração com lógica existente: adaptadores para `salas`, `pistas`, `suspeitos` (funções de render e handlers de evento)
 - [ ] Gerenciamento de estado da UI: tela atual, estado de seleção, formulários, mensagens de feedback
 - [ ] Acessibilidade: contraste mínimo, tamanhos de fonte, navegação por teclado, foco visível
 
 ## 4) Implementação Incremental (Sprints)
-- [ ] Sprint 1: Janela inicial, loop de eventos, Menu Principal, atalhos (ex.: F1 Ajuda)
+- [x] Sprint 1: Janela inicial, loop de eventos, Menu Principal, atalhos (ex.: F1 Ajuda)
 - [ ] Sprint 2: Tela de Salas — renderização da árvore, destaque do nó, comandos `e/d/s/r`, trilha visual
 - [ ] Sprint 3: Tela de Pistas — lista ordenada, busca, adicionar/atualizar, mensagens de sucesso/erro
 - [ ] Sprint 4: Tela de Suspeitos — listagem, buscar, adicionar/atualizar, remover, associações
@@ -35,9 +35,9 @@ Este checklist orienta a criação da interface gráfica do Detective Quest, des
 - [ ] Sprint 6: Configurações — fonte/tamanho, tema claro/escuro (opcional), redefinir atalhos
 
 ## 5) Build e Entrega
-- [ ] Atualizar Makefile: alvos `gui` e `run-gui` com links para a biblioteca escolhida
+- [x] Atualizar Makefile: alvos `gui` e `run-gui` com links para a biblioteca escolhida
 - [ ] Pasta de assets: `assets/svg/` (somente SVG), `assets/fonts/` (se necessário)
-- [ ] Binário: `detective-quest-gui.exe` (modo GUI) e manter `detective-quest.exe` (modo terminal)
+- [x] Binário: `detective-quest-gui.exe` (modo GUI) e manter `detective-quest.exe` (modo terminal)
 - [ ] Pacote de release: incluir binário GUI e assets (zip separado `dist/detective-quest-gui-vX.Y.Z.zip`)
 
 ## 6) Testes e QA
