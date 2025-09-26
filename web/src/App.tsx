@@ -1,14 +1,21 @@
 import { useState } from 'react'
+import { Link, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import './App.css'
 
 function App() {
-  const tabs = ['Salas', 'Pistas', 'Suspeitos', 'Ajuda'] as const
-  const [activeTab, setActiveTab] = useState<typeof tabs[number]>('Salas')
+  const tabs = [
+    { label: 'Salas', path: '/salas' },
+    { label: 'Pistas', path: '/pistas' },
+    { label: 'Suspeitos', path: '/suspeitos' },
+    { label: 'Ajuda', path: '/ajuda' },
+  ] as const
+  const location = useLocation()
+  const currentTab = tabs.find(t => location.pathname.startsWith(t.path))?.label ?? 'Salas'
   const [showModal, setShowModal] = useState(false)
   const [toast, setToast] = useState<{ kind: 'success' | 'warning' | 'danger' | 'info'; text: string } | null>(null)
 
-  const svgFor = (t: typeof tabs[number]) => {
-    switch (t) {
+  const svgFor = (label: string) => {
+    switch (label) {
       case 'Salas':
         return (<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="6" height="6"/><rect x="15" y="4" width="6" height="6"/><rect x="9" y="14" width="6" height="6"/></svg>)
       case 'Pistas':
@@ -34,71 +41,26 @@ function App() {
 
       <nav className="tabs" role="tablist" aria-label="Navegação Principal">
         {tabs.map((t) => (
-          <button
-            key={t}
+          <Link
+            key={t.label}
             role="tab"
-            aria-selected={activeTab === t}
-            className={`tab ${activeTab === t ? 'tab--active' : ''}`}
-            onClick={() => setActiveTab(t)}
+            aria-selected={currentTab === t.label}
+            className={`tab ${currentTab === t.label ? 'tab--active' : ''}`}
+            to={t.path}
           >
-            {svgFor(t)}
-            {t}
-          </button>
+            {svgFor(t.label)}
+            {t.label}
+          </Link>
         ))}
       </nav>
 
-      {activeTab === 'Salas' && (
-        <section>
-          <div style={{ display: 'flex', gap: '12px', marginBottom: '12px' }}>
-            <input className="input" placeholder="Buscar sala" aria-label="Buscar sala" />
-            <button className="btn btn--secondary">Filtrar</button>
-          </div>
-          <div className="list">
-            {["Entrada", "Corredor", "Biblioteca", "Laboratório"].map((item, i) => (
-              <div key={i} className="list-item" role="button" tabIndex={0}>{item}</div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {activeTab === 'Pistas' && (
-        <section>
-          <div style={{ display: 'flex', gap: '12px', marginBottom: '12px' }}>
-            <input className="input" placeholder="Buscar pista" aria-label="Buscar pista" />
-            <button className="btn btn--secondary">Filtrar</button>
-          </div>
-          <div className="list">
-            {["Pegada", "Fibra têxtil", "Registro de acesso"].map((item, i) => (
-              <div key={i} className="list-item" role="button" tabIndex={0}>{item}</div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {activeTab === 'Suspeitos' && (
-        <section>
-          <div style={{ display: 'flex', gap: '12px', marginBottom: '12px' }}>
-            <input className="input" placeholder="Buscar suspeito" aria-label="Buscar suspeito" />
-            <button className="btn btn--secondary">Filtrar</button>
-          </div>
-          <div className="list">
-            {["Ana","Bruno","Carla"].map((item, i) => (
-              <div key={i} className="list-item" role="button" tabIndex={0}>{item}</div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {activeTab === 'Ajuda' && (
-        <section>
-          <div className="list" style={{ maxWidth: 640 }}>
-            <div className="list-item">F1: Abrir Ajuda</div>
-            <div className="list-item">Tab: Navegar entre itens</div>
-            <div className="list-item">Enter: Confirmar ação</div>
-            <div className="list-item">Esc: Fechar modal</div>
-          </div>
-        </section>
-      )}
+      <Routes>
+        <Route path="/" element={<Navigate to="/salas" replace />} />
+        <Route path="/salas" element={<Salas setToast={setToast} />} />
+        <Route path="/pistas" element={<Pistas setToast={setToast} />} />
+        <Route path="/suspeitos" element={<Suspeitos setToast={setToast} />} />
+        <Route path="/ajuda" element={<Ajuda />} />
+      </Routes>
 
       {showModal && (
         <div className="modal-backdrop" role="dialog" aria-modal="true">
@@ -120,6 +82,67 @@ function App() {
         </div>
       )}
     </div>
+  )
+}
+
+function Salas({ setToast }: { setToast: (t: { kind: 'success' | 'warning' | 'danger' | 'info'; text: string }) => void }) {
+  return (
+    <section>
+      <div style={{ display: 'flex', gap: '12px', marginBottom: '12px' }}>
+        <input className="input" placeholder="Buscar sala" aria-label="Buscar sala" />
+        <button className="btn btn--secondary">Filtrar</button>
+      </div>
+      <div className="list">
+        {["Entrada", "Corredor", "Biblioteca", "Laboratório"].map((item, i) => (
+          <div key={i} className="list-item" role="button" tabIndex={0}>{item}</div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function Pistas({ setToast }: { setToast: (t: { kind: 'success' | 'warning' | 'danger' | 'info'; text: string }) => void }) {
+  return (
+    <section>
+      <div style={{ display: 'flex', gap: '12px', marginBottom: '12px' }}>
+        <input className="input" placeholder="Buscar pista" aria-label="Buscar pista" />
+        <button className="btn btn--secondary">Filtrar</button>
+      </div>
+      <div className="list">
+        {["Pegada", "Fibra têxtil", "Registro de acesso"].map((item, i) => (
+          <div key={i} className="list-item" role="button" tabIndex={0}>{item}</div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function Suspeitos({ setToast }: { setToast: (t: { kind: 'success' | 'warning' | 'danger' | 'info'; text: string }) => void }) {
+  return (
+    <section>
+      <div style={{ display: 'flex', gap: '12px', marginBottom: '12px' }}>
+        <input className="input" placeholder="Buscar suspeito" aria-label="Buscar suspeito" />
+        <button className="btn btn--secondary">Filtrar</button>
+      </div>
+      <div className="list">
+        {["Ana","Bruno","Carla"].map((item, i) => (
+          <div key={i} className="list-item" role="button" tabIndex={0}>{item}</div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function Ajuda() {
+  return (
+    <section>
+      <div className="list" style={{ maxWidth: 640 }}>
+        <div className="list-item">F1: Abrir Ajuda</div>
+        <div className="list-item">Tab: Navegar entre itens</div>
+        <div className="list-item">Enter: Confirmar ação</div>
+        <div className="list-item">Esc: Fechar modal</div>
+      </div>
+    </section>
   )
 }
 
