@@ -1,0 +1,28 @@
+# Binaries (executáveis)
+*.exe
+*.dll
+*.pdb
+*.lib
+*.so
+*.dylib
+
+# Objetos de compilação
+*.o
+*.obj
+
+# Logs e temporários
+*.log
+*.tmp
+
+# Binários de testes
+/tests/*.exe
+
+# Artefatos de build
+/build/
+
+# Configurações de IDE/Editor (opcional)
+.vscode/
+.idea/
+
+# Arquivos do Windows
+Thumbs.db
