@@ -50,3 +50,13 @@ Este checklist orienta a criação da interface gráfica do Detective Quest, des
 - [x] README: seção “Interface Gráfica (GUI)” com planejamento e referências
 - [x] Docs: `docs/06-ui-ux.md` (guidelines e componentes), `docs/07-arquitetura-ui.md` (Raylib e build)
 - [ ] Changelog e Decision Log: registrar escolhas (biblioteca, padrões de navegação)
+
+## Progresso Web UI (React + Vite)
+- [x] Projeto web inicializado em `web/` com React + TypeScript
+- [x] Tokens de design (Dark mode) aplicados em `web/src/index.css`
+- [x] Estilos base de componentes (Button, Input, Tabs, List Item, Modal, Toast) em `web/src/App.css`
+- [x] Ícones nas Tabs integrados como SVG inline com `currentColor`
+- [x] Fonte Inter via Google Fonts configurada em `web/index.html`
+- [x] Navegação por rotas adicionada (React Router) para Salas/Pistas/Suspeitos/Ajuda
+- [ ] Documentar mapeamento Figma → CSS variables e componentes
+- [ ] Exportar/organizar mais ícones SVG e aplicar onde necessário
