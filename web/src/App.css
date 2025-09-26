@@ -1,0 +1,136 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Base container */
+.app {
+  padding: var(--ds-space-24);
+}
+
+/* Button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-08);
+  height: 40px;
+  padding: 0 var(--ds-space-16);
+  border-radius: var(--ds-radius-08);
+  border: var(--ds-border-01) solid transparent;
+  font: 600 16px/24px Inter, system-ui, Arial;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+.btn:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--ds-color-focus); }
+.btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+
+.btn--primary { background: var(--ds-color-primary); color: var(--ds-color-text-primary); }
+.btn--primary:hover { background: var(--ds-color-primary-hover); }
+.btn--primary:active { background: var(--ds-color-primary-pressed); }
+
+.btn--secondary { background: var(--ds-color-surface-01); color: var(--ds-color-text-primary); border-color: var(--ds-color-border); }
+.btn--secondary:hover { border-color: var(--ds-color-primary-hover); }
+.btn--secondary:active { border-color: var(--ds-color-primary-pressed); }
+
+.btn--ghost { background: transparent; color: var(--ds-color-text-primary); border-color: var(--ds-color-border); }
+.btn--ghost:hover { border-color: var(--ds-color-primary-hover); }
+.btn--ghost:active { border-color: var(--ds-color-primary-pressed); }
+
+/* Input */
+.input {
+  height: 40px;
+  padding: 0 var(--ds-space-12);
+  border-radius: var(--ds-radius-08);
+  border: var(--ds-border-01) solid var(--ds-color-border);
+  background: var(--ds-color-surface-01);
+  color: var(--ds-color-text-primary);
+  font: 400 16px/24px Inter, system-ui, Arial;
+}
+.input::placeholder { color: var(--ds-color-text-secondary); }
+.input:focus { outline: none; box-shadow: 0 0 0 3px var(--ds-color-focus); }
+.input--error { border-color: var(--ds-color-danger); }
+
+/* Tabs */
+.tabs { display: flex; gap: var(--ds-space-16); border-bottom: var(--ds-border-01) solid var(--ds-color-border); margin-bottom: var(--ds-space-16); }
+.tab {
+  padding: var(--ds-space-12) var(--ds-space-16);
+  cursor: pointer;
+  font: 600 16px/24px Inter;
+  color: var(--ds-color-text-secondary);
+}
+.tab--active { color: var(--ds-color-text-primary); border-bottom: var(--ds-border-02) solid var(--ds-color-primary); }
+.tab:hover { color: var(--ds-color-text-primary); }
+
+/* List */
+.list { display: grid; gap: var(--ds-space-08); }
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-12);
+  padding: var(--ds-space-12) var(--ds-space-16);
+  border-radius: var(--ds-radius-08);
+  border: var(--ds-border-01) solid var(--ds-color-border);
+  background: var(--ds-color-surface-01);
+  color: var(--ds-color-text-primary);
+}
+.list-item:hover { border-color: var(--ds-color-primary-hover); }
+.list-item--selected { box-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+
+/* Modal */
+.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: grid; place-items: center; }
+.modal { width: 560px; max-width: calc(100% - 48px); background: var(--ds-color-surface-01); border-radius: var(--ds-radius-12); border: var(--ds-border-01) solid var(--ds-color-border); padding: var(--ds-space-24); display: grid; gap: var(--ds-space-16); }
+
+/* Toast */
+.toast {
+  position: fixed;
+  right: var(--ds-space-24);
+  bottom: var(--ds-space-24);
+  background: var(--ds-color-surface-01);
+  color: var(--ds-color-text-primary);
+  border: var(--ds-border-01) solid var(--ds-color-border);
+  border-radius: var(--ds-radius-08);
+  padding: var(--ds-space-12) var(--ds-space-16);
+}
+.toast--success { border-color: var(--ds-color-success); }
+.toast--warning { border-color: var(--ds-color-warning); }
+.toast--danger { border-color: var(--ds-color-danger); }
+.toast--info { border-color: var(--ds-color-info); }
